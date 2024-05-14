@@ -37,6 +37,8 @@
 										<h1>Jenkins Pipeline</h1>
 									</header>
 									<ul>
+										<li>This section describes how to get started with creating your Pipeline project in Jenkins and introduces you to the various ways that a Jenkinsfile can be created and stored.</li>
+										<br>
 										<h2>Step - 1 Jenkins Installation</h2>
 										<p>This is some text below the image. <a href="https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-22-04">Detailed document</a> can be found in DigitalOcean.</p> 
 										<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,6 +57,7 @@
 															<div class="terminal-line">$ sudo apt-get update</div>
 															<div class="terminal-line">$ sudo apt-get install jenkins</div>
     										</section>
+										<br>
 										<br>
 										<h2>Step - 2 Jenkins Configuration</h2>
 										<li>To set up Jenkins, go to your browser and open http://localhost:8080 where Jenkins server is running.</li>
@@ -89,16 +92,63 @@
 										<h2>Step - 2 Create Pipeline</h2>
 										<p> <a href="https://www.jenkins.io/doc/book/pipeline/getting-started/">Detailed document</a> can be found in.</p> 
 										<li>Login to Jenkins</li>
+										<br>
+										<img src="/static/images/pipe1.png" alt="Jenkins Unlock Screen" style="max-width: 20%; height: auto;">
+										<br>
 										<li>From the Jenkins home page (i.e. the Dashboard of the Jenkins classic UI), click New Item at the top left.</li>
 										<li>In the Enter an item name field, specify the name for your new Pipeline project.
 											Caution: Jenkins uses this item name to create directories on disk. It is recommended to avoid using spaces in item names, since doing so may uncover bugs in scripts that do not properly handle spaces in directory paths.</li>
+										<br>	
+										<img src="/static/images/pipe2.png" alt="Jenkins Unlock Screen" style="max-width: 40%; height: auto;">
+										<br>
 										<li>Scroll down and click Pipeline, then click OK at the end of the page to open the Pipeline configuration page (whose General tab is selected).</li>
+										<li>Configure the git repo.</li>
+										<br>
+										<img src="/static/images/pipe3.png" alt="Jenkins Unlock Screen" style="max-width: 40%; height: auto;">
+										<br>
+
 										<li>Click the Pipeline tab at the top of the page to scroll down to the Pipeline section.</li>
+										<br>
+										<img src="/static/images/pipe4.png" alt="Jenkins Unlock Screen" style="max-width: 40%; height: auto;">
+										<br>
+										<li>And Save the configuration</li>
 										<p> Click the Pipeline tab at the top of the page to scroll down to the Pipeline section.
 											Note: If instead you are defining your Jenkinsfile in source control, follow the instructions in In <a href="https://www.jenkins.io/doc/book/pipeline/getting-started/#defining-a-pipeline-in-scm">SCM </a> below.</p>
-
-
-
+										<br>
+										<br>
+										<h2>Step - 3 Build</h2>
+										<br>
+										<br>
+										<li>Click the Job name at the Dashboard click the Build button on the right side</li>
+										<br>
+										<img src="/static/images/build1.png" alt="Jenkins Unlock Screen" style="max-width: 40%; height: auto;">
+										<br>
+										<li>In this section defined pipeline with Jenkisfile can be on Stage View.  </li>
+										<br>
+										<img src="/static/images/build2.png" alt="Jenkins Unlock Screen" style="max-width: 40%; height: auto;">
+										<br>
+										<li>For the Build logs click to the related build number and then select the Console output.</li>
+										<br>
+										<img src="/static/images/build3.png" alt="Jenkins Unlock Screen" style="max-width: 40%; height: auto;">
+										<br>
+										<li>You can display the logs in Console Output section.</li>
+										<li>You can display the pipeline created a Docker images and start the Docker container.</li>
+										<br>
+											<meta name="viewport" content="width=device-width, initial-scale=1.0">
+											<title>Terminal Section</title>
+												 <!-- Terminal section -->
+												<section class="terminal">
+													<!-- Terminal container -->
+														<div class="terminal-container-3">
+															<!-- Terminal command line -->											
+													<div class="terminal-line">$ ubuntu@ip-10-1-8-248:~$ docker ps</div>
+													<div class="terminal-line">CONTAINER ID   IMAGE                          COMMAND                  CREATED          STATUS          PORTS                                       NAMES</div>
+													<div class="terminal-line">70cd396f9610   bbenzer/python-django:latest   "python3 manage.py r…"   32 minutes ago   Up 32 minutes   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   mystifying_mahavira</div>
+													<div class="terminal-line">$ubuntu@ip-10-1-8-248:~$ docker images</div>
+													<div class="terminal-line">REPOSITORY              TAG       IMAGE ID       CREATED             SIZE</div>
+													<div class="terminal-line">bbenzer/python-django   latest    1859d458fe0f   32 minutes ago      196MB</div>     
+												</section>
+								
 									</ul>
 								</section>
 
@@ -125,19 +175,19 @@
 								<li><a href="{% url 'home_view' %}">Home Page</a></li>
 								<li><a href="{% url 'about_view' %}">About me</a></li>
 								<li>
-									<span class="opener">Architectural Diagram</span>
+									<span class="opener">DevOps</span>
 									<ul>
 										<li><a href="{% url 'aws_view' %}">Aws</a></li>
-										<li><a href="{% url 'terraform_view' %}">Terraform</a></li>
 										<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
+										<li><a href="{% url 'terraform_view' %}">Terraform</a></li>
 									</ul>						
 								</li>
 								<li>
 									<span class="opener">German Practice</span>
 									<ul>
 										<li><a href="{% url 'artickle_view' %}">Artikles</a></li>
-										<li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
 										<li><a href="{% url 'translation_view' %}">Translation</a></li>
+										<li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
 									</ul>
 								</li>
 							</nav>

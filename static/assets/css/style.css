@@ -21,10 +21,15 @@
 
 /* Terminal section 1 */
 .terminal-1 {
-    height: 300px; /* Adjust height as needed */
+    height: 200px; /* Adjust height as needed */
 }
 
 /* Terminal section 2 */
 .terminal-2 {
-    height: 200px; /* Adjust height as needed */
+    height: 60px; /* Adjust height as needed */
+}
+
+/* Terminal section 3 */
+.terminal-3 {
+    height: 60px; /* Adjust height as needed */
 }
