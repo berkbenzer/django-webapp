@@ -39,7 +39,7 @@
 									</header>
 									<ul>
 										<h2>Step - 1 Jenkins Installation</h2>
-										<li>Detailled document can be found in DigitialOcean https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-22-04</li>
+										<p>This is some text below the image. <a href="https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-22-04">Detailed document</a> can be found in DigitalOcean.</p> 
 										    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     									    <title>Terminal Section</title>
     									    <style>
@@ -73,19 +73,53 @@
 												<div class="terminal-line">$ sudo apt-get update</div>
 												<div class="terminal-line">$ sudo apt-get install jenkins</div>
     										</section>
+										<br>
 										<h2>Step - 2 Jenkins Configuration</h2>
 										<li>To set up Jenkins, go to your browser and open http://localhost:8080 where Jenkins server is running.</li>
 									    <li>The Unlock Jenkins screen will appear as shown below, asking for the administrator password.</li>
-										<img src="/static/images/scr1.png" alt="Jenkins Unlock Screen" style="max-width: 100%; height: auto;">
+										<br>
+										<img src="/static/images/scr1.png" alt="Jenkins Unlock Screen" style="max-width: 60%; height: auto;">
+										<br>	
+										<br>
 										<li>In terminal run the command below paste the output to the Unlock Jenkins section</li>
-										<section class="terminal">
-											<div class="terminal-line">sudo cat /var/lib/jenkins/secrets/initialAdminPassword</div>
-										</section>
+										<br>
+											<meta name="viewport" content="width=device-width, initial-scale=1.0">
+											<title>Terminal Section</title>
+											<style>
+												/* Terminal styles */
+												.terminal {
+													background-color: black;
+													color: white;
+													font-family: monospace;
+													padding: 10px;
+													border-radius: 3px;
+													overflow: auto;
+													max-width: 600px;
+													margin-left: 30px; 
+													height: 42px; /* Adjust height as needed */
+												}
+												.terminal-line {
+													line-height: 1.2;
+													padding-bottom: 5px;
+												}
+												.terminal-input {
+													color: green;
+												}
+											</style>
+											 <!-- Terminal section -->
+											<section class="terminal">
+												<div class="terminal-line">$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword</div>
+											</section>
+										<br>
 										<li>The next screen display the plugins section. We will move on with the suggested plugins. </li>
+										<br>
 										<img src="/static/images/scr2.png" alt="Jenkins Plugin Screen" style="max-width: 60%; height: auto;">
 										<li>The installation process will begin.</li>
+										<br>
 										<img src="/static/images/scr3.png" alt="Jenkins Process Screen" style="max-width: 60%; height: auto;">
+										<br>
 										<li>Confirm either the domain name for your server or your server’s IP address</li>
+										<br>
 										<img src="/static/images/scr4.png" alt="Jenkins IP/DNS Screen" style="max-width: 60%; height: auto;">
 										<li>Click Save and Finish. You’ll receive a confirmation page confirming that “Jenkins is Ready!”</li>
 										<img src="/static/images/scr5.png" alt="Jenkins Confirmation Screen" style="max-width: 60%; height: auto;">
