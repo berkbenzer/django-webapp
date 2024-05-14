@@ -7,7 +7,7 @@ def home_view(request):
     return render(request, "index.html", {})
 
 def homepage_view(request):
-    return render(request, "index.html", {})
+    return render(request, "home.html", {})
 
 def about_view(request):
     return render(request, "about.html", {})
@@ -20,9 +20,6 @@ def verbs_view(request):
 
 def translation_view(request):
     return render(request, "translation.html", {})
-
-def sinarch_view(request):
-    return render(request, "singlearch.html", {})
 
 def jenkins_view(request):
     return render(request, "jenkins.html", {})
