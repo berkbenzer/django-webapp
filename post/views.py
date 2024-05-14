@@ -24,6 +24,9 @@ def translation_view(request):
 def sinarch_view(request):
     return render(request, "singlearch.html", {})
 
+def jenkins_view(request):
+    return render(request, "jenkins.html", {})
+
 def verbs_view(request):
     practice = GermanPractice()
     if request.method == 'POST':
