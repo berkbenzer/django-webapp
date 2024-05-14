@@ -87,9 +87,18 @@
 										<li>Click Save and Finish. You’ll receive a confirmation page confirming that “Jenkins is Ready!”</li>
 										<img src="/static/images/scr5.png" alt="Jenkins Confirmation Screen" style="max-width: 60%; height: auto;">
 										<h2>Step - 2 Create Pipeline</h2>
-										<li>Build Docker Image</li>
-										<li>Push Docker Image to Docker Hub</li>
-										<li>Pull Docker Image to Deployment Server</li>
+										<p> <a href="https://www.jenkins.io/doc/book/pipeline/getting-started/">Detailed document</a> can be found in.</p> 
+										<li>Login to Jenkins</li>
+										<li>From the Jenkins home page (i.e. the Dashboard of the Jenkins classic UI), click New Item at the top left.</li>
+										<li>In the Enter an item name field, specify the name for your new Pipeline project.
+											Caution: Jenkins uses this item name to create directories on disk. It is recommended to avoid using spaces in item names, since doing so may uncover bugs in scripts that do not properly handle spaces in directory paths.</li>
+										<li>Scroll down and click Pipeline, then click OK at the end of the page to open the Pipeline configuration page (whose General tab is selected).</li>
+										<li>Click the Pipeline tab at the top of the page to scroll down to the Pipeline section.</li>
+										<p> Click the Pipeline tab at the top of the page to scroll down to the Pipeline section.
+											Note: If instead you are defining your Jenkinsfile in source control, follow the instructions in In <a href="https://www.jenkins.io/doc/book/pipeline/getting-started/#defining-a-pipeline-in-scm">SCM </a> below.</p>
+
+
+
 									</ul>
 								</section>
 
@@ -113,22 +122,22 @@
 								<h2>Menu</h2>
 							</header>
 							<ul>
-								<li><a href="{% url 'home_view' %}">HomePage</a></li>
-								<li><a href="index.html">About me</a></li>
+								<li><a href="{% url 'home_view' %}">Home Page</a></li>
+								<li><a href="{% url 'about_view' %}">About me</a></li>
 								<li>
 									<span class="opener">Architectural Diagram</span>
 									<ul>
-										<li><a href="/aws.html">Aws</a></li>
-										<li><a href="/terraform.html">Terraform</a></li>
-										<li><a href="/jenkins.html">Jenkins</a></li>
+										<li><a href="{% url 'aws_view' %}">Aws</a></li>
+										<li><a href="{% url 'terraform_view' %}">Terraform</a></li>
+										<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
 									</ul>						
 								</li>
 								<li>
 									<span class="opener">German Practice</span>
 									<ul>
-										<li><a href="/artikles.html">Artikles</a></li>
-										<li><a href="/verbs.html">Verb Konjugations</a></li>
-										<li><a href="/translation.html">Translation</a></li>
+										<li><a href="{% url 'artickle_view' %}">Artikles</a></li>
+										<li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+										<li><a href="{% url 'translation_view' %}">Translation</a></li>
 									</ul>
 								</li>
 							</nav>
