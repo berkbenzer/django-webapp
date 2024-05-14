@@ -10,6 +10,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/static/assets/css/main.css" />
+		<link rel="stylesheet" href="/static/assets/css/style.css" /> 
+		
 	</head>
 	<body class="is-preload">
 
@@ -40,38 +42,21 @@
 									<ul>
 										<h2>Step - 1 Jenkins Installation</h2>
 										<p>This is some text below the image. <a href="https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-22-04">Detailed document</a> can be found in DigitalOcean.</p> 
-										    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    									    <title>Terminal Section</title>
-    									    <style>
-    									        /* Terminal styles */
-    									        .terminal {
-    									            background-color: black;
-    									            color: white;
-    									            font-family: monospace;
-    									            padding: 10px;
-    									            border-radius: 3px;
-    									            overflow: auto;
-													max-width: 600px;
-													margin-left: 30px; 
-    									            height: 195px; /* Adjust height as needed */
-    									        }
-    									        .terminal-line {
-													line-height: 1.2;
-    									            padding-bottom: 5px;
-    									        }
-    									        .terminal-input {
-    									            color: green;
-    									        }
-    									    </style>
-											 <!-- Terminal section -->
-    										<section class="terminal">
-    										    <div class="terminal-line">$ sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \</div>
-												<div class="terminal-line">  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key</div>
-												<div class="terminal-line">$ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \</div>
-												<div class="terminal-line">  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \</div>
-												<div class="terminal-line">  /etc/apt/sources.list.d/jenkins.list > /dev/null</div>
-												<div class="terminal-line">$ sudo apt-get update</div>
-												<div class="terminal-line">$ sudo apt-get install jenkins</div>
+										<meta name="viewport" content="width=device-width, initial-scale=1.0">
+											
+    									<title>Terminal Section</title>
+											 <!-- Terminal section 1 -->
+    										<section class="terminal-1">
+											    <!-- Terminal container -->
+        											<div class="terminal-container">
+														<!-- Terminal command line -->
+    										    			<div class="terminal-line">$ sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \</div>
+															<div class="terminal-line">  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key</div>
+															<div class="terminal-line">$ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \</div>
+															<div class="terminal-line">  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \</div>
+															<div class="terminal-line">  /etc/apt/sources.list.d/jenkins.list > /dev/null</div>
+															<div class="terminal-line">$ sudo apt-get update</div>
+															<div class="terminal-line">$ sudo apt-get install jenkins</div>
     										</section>
 										<br>
 										<h2>Step - 2 Jenkins Configuration</h2>
@@ -83,34 +68,15 @@
 										<br>
 										<li>In terminal run the command below paste the output to the Unlock Jenkins section</li>
 										<br>
-											<meta name="viewport" content="width=device-width, initial-scale=1.0">
-											<title>Terminal Section</title>
-											<style>
-												/* Terminal styles */
-												.terminal {
-													background-color: black;
-													color: white;
-													font-family: monospace;
-													padding: 10px;
-													border-radius: 3px;
-													overflow: auto;
-													max-width: 600px;
-													margin-left: 30px; 
-													height: 42px; /* Adjust height as needed */
-												}
-												.terminal-line {
-													line-height: 1.2;
-													padding-bottom: 5px;
-												}
-												.terminal-input {
-													color: green;
-												}
-											</style>
-											 <!-- Terminal section -->
-											<section class="terminal">
-												<div class="terminal-line">$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword</div>
-											</section>
-										<br>
+										    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+												<title>Terminal Section</title>
+												 <!-- Terminal section 2 -->
+												<section class="terminal-2">
+													<!-- Terminal container -->
+														<div class="terminal-container">
+															<!-- Terminal command line -->											
+													<div class="terminal-line">$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword</div>
+												</section>
 										<li>The next screen display the plugins section. We will move on with the suggested plugins. </li>
 										<br>
 										<img src="/static/images/scr2.png" alt="Jenkins Plugin Screen" style="max-width: 60%; height: auto;">
@@ -186,6 +152,7 @@
 			<script src="/static/assets/js/breakpoints.min.js"></script>
 			<script src="/static/assets/js/util.js"></script>
 			<script src="/static/assets/js/main.js"></script>
+			
 
 	</body>
 </html>

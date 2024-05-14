@@ -1,0 +1,30 @@
+/* Terminal styles */
+.terminal-container {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 3px;
+    overflow: auto;
+    max-width: 600px;
+    margin-left: 30px;
+}
+
+.terminal-line {
+    line-height: 1.2;
+    padding-bottom: 5px;
+}
+
+.terminal-input {
+    color: green;
+}
+
+/* Terminal section 1 */
+.terminal-1 {
+    height: 300px; /* Adjust height as needed */
+}
+
+/* Terminal section 2 */
+.terminal-2 {
+    height: 200px; /* Adjust height as needed */
+}
