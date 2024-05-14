@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from post.views import home_view, artickle_view, translation_view, verbs_view, sinarch_view,jenkins_view
+from post.views import home_view, artickle_view, translation_view, verbs_view, sinarch_view, jenkins_view, aws_view, terraform_view , about_view
 
 
 urlpatterns = [
@@ -27,4 +27,7 @@ urlpatterns = [
     path('verbs.html/', verbs_view, name='verbs_view'),
     path('singlearch.html/',sinarch_view , name= 'sinarch_view'),
     path('jenkins.html/',jenkins_view , name= 'jenkins_view'),
+    path('aws.html/',aws_view , name= 'aws_view'),
+    path('terraform.html/',terraform_view , name= 'terraform_view'),
+    path('about.html/',about_view , name= 'about_view'),
 ] 

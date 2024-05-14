@@ -27,6 +27,16 @@ def sinarch_view(request):
 def jenkins_view(request):
     return render(request, "jenkins.html", {})
 
+def aws_view(request):
+    return render(request, "aws.html", {})
+
+def terraform_view(request):
+    return render(request, "terraform.html", {})
+
+def about_view(request):
+    return render(request, "about.html", {})
+
+
 def verbs_view(request):
     practice = GermanPractice()
     if request.method == 'POST':
