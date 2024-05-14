@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from post.views import home_view, artickle_view, translation_view, verbs_view, homepage_view
+from post.views import home_view, artickle_view, translation_view, verbs_view, sinarch_view
 
 
 urlpatterns = [
@@ -24,5 +24,6 @@ urlpatterns = [
     path('', home_view, name='home_view'),
     path('artikles.html/', artickle_view, name='artickle_view'),
     path('translation.html/', translation_view, name='translation_view'),
-    path('verbs.html/', verbs_view, name='verbs_view')
+    path('verbs.html/', verbs_view, name='verbs_view'),
+    path('singlearch.html/',sinarch_view , name= 'sinarch_view')
 ] 
