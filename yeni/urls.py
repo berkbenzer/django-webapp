@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from post.views import home_view, homepage_view,artickle_view, translation_view, verbs_view, jenkins_view, aws_view, terraform_view , about_view
+from post.views import home_view, homepage_view, artickle_view, translation_view, verbs_view, jenkins_view, aws_view, terraform_view , about_view
 
 
 urlpatterns = [
