@@ -35,10 +35,10 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>Jenkins Pipeline</h1>
+										<h>Jenkins Pipeline</h1>
 									</header>
 									<ul>
-										<li>Jenkis Installation to Ubuntu Server</li>
+										<h2>Jenkins Installation to Ubuntu Server</h2>
 										    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     									    <title>Terminal Section</title>
     									    <style>
@@ -62,11 +62,19 @@
 											 <!-- Terminal section -->
     										<section class="terminal">
     										    <div class="terminal-line">sudo apt update</div>
+												<title>Java Install</title>
     										    <div class="terminal-line">sudo apt install default-jre</div>
     										    <div class="terminal-line">java -version</div>
     										    <div class="terminal-line">sudo apt install default-jdk</div>
     										    <div class="terminal-line terminal-input">javac -version</div>
-    										    <div class="terminal-line">file3.txt  file4.txt</div>
+												<title>Jenkins Installation Part</title>
+    										    <div class="terminal-line">wget -q -O —  <ins>https://pkg.jenkins.io/debian-stable/jenkins.io.key</ins>  | sudo apt-key add -</div>
+												<div class="terminal-line">sudo sh -c ‘echo deb  <ins>http://pkg.jenkins.io/debian-stable</ins>  binary/ ></div>
+												<div class="terminal-line">/etc/apt/sources.list.d/jenkins.list’</div>
+												<div class="terminal-line">sudo apt-get update</div>
+												<div class="terminal-line">sudo apt-get install jenkins</div>
+												<div class="terminal-line">sudo service jenkins status</div>
+
     										    <!-- Add more terminal lines as needed -->
     										</section>
 										<li>Build Docker Image</li>
