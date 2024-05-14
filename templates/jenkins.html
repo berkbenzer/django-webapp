@@ -5,7 +5,7 @@
         <title>Create by Berk Benzer</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="static/assets/css/main.css" />
+        <link rel="stylesheet" href="/static/assets/css/main.css" />
     </head>
     <body class="is-preload">
         <!-- Sidebar -->
@@ -25,22 +25,22 @@
                         <h2>Menu</h2>
                     </header>
                     <ul>
-                        <li><a href="index.html">Home Page</a></li>
+                        <li><a href="{% url 'home_view' %}">Home Page</a></li>
                         <li><a href="about.html">About me</a>
                         <li>
                             <span class="opener">Architectural Diagram</span>
                             <ul>
                                 <li><a href="aws.html">Aws</a></li>
                                 <li><a href="terraform.html">Terraform</a></li>
-                                <li><a href="jenkins.html">Jenkins</a></li>
+                                <li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
                             </ul>                       
                         </li>
                         <li>
                             <span class="opener">German Practice</span>
                             <ul>
-                                <li><a href="artikles.html">Artikles</a></li>
-                                <li><a href="verbs.html">Verb Konjugations</a></li>
-                                <li><a href="translation.html">Translation</a></li>
+                                <li><a href="{% url 'artickle_view' %}">Artikles</a></li>
+                                <li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+                                <li><a href="{% url 'translation_view' %}">Translation</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -81,11 +81,11 @@
         </div>
 
         <!-- Scripts -->
-        <script src="static/assets/js/jquery.min.js"></script>
-        <script src="static/assets/js/browser.min.js"></script>
-        <script src="static/assets/js/breakpoints.min.js"></script>
-        <script src="static/assets/js/util.js"></script>
-        <script src="static/assets/js/main.js"></script>
+        <script src="/static/assets/js/jquery.min.js"></script>
+        <script src="/static/assets/js/browser.min.js"></script>
+        <script src="/static/assets/js/breakpoints.min.js"></script>
+        <script src="/static/assets/js/util.js"></script>
+        <script src="/static/assets/js/main.js"></script>
 
     </body>
 </html>
