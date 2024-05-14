@@ -26,6 +26,5 @@ urlpatterns = [
     path('translation.html/', translation_view, name='translation_view'),
     path('verbs.html/', verbs_view, name='verbs_view'),
     path('singlearch.html/',sinarch_view , name= 'sinarch_view'),
-    path('jenkins.html/',jenkins_view , name= 'jenkins_view')
-
+    path('jenkins.html/',jenkins_view , name= 'jenkins_view'),
 ] 
