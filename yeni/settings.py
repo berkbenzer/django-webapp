@@ -149,4 +149,4 @@ def get_public_ip():
 public_ip = get_public_ip()
 
 # Update ALLOWED_HOSTS dynamically
-ALLOWED_HOSTS = ['18.134.120.111', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['18.134.120.111', 'bergtechlab.com' ,'localhost', '127.0.0.1']
