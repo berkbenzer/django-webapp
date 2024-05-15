@@ -1,94 +1,134 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Generic - Editorial by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/static/assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+    <title>Generic - Editorial by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/static/assets/css/main.css" />
+    <link rel="stylesheet" href="/static/assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" />
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!-- Prism JS for code syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <header id="header">
+                    <p> <strong>This Page is still under Construction Terraform</strong></p>
+                    <!-- Social Icons -->
+                </header>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+                <!-- Content -->
+                <section>
+                    <header class="main">
+                        <h1>Kubernetes</h1>
+                        <h2>Install Kubernetes Cluster to AWS</h2>
+						<li>Check terraform <strong>providers.tf</strong> file.</li>
 
-							<!-- Header -->
-								<header id="header">
-									<p> <strong>Kubernetes</strong></p>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-									</ul>
-								</header>
+                    </header>
+					<style>
+					  .codebox {
+						background-color: #f5f5f5; /* Change this to your desired background color */
+						border: none; /* Removes any border from the codebox */
+                        width: 80%;
+					  }
+					  
+					  .codebox pre {
+						border: none; /* Removes any border from the pre element */
+						background: none; /* Removes the default background */
+					  }
+					  
+					  .codebox code {
+						border: none; /* Removes any border from the code element */
+						background: none; /* Removes the default background */
+					  }
+					</style>
+					<div class="codebox">
+                        <pre><code class="language-hcl">berkbenzer@berk-MBP git clone https://github.com/hashicorp/learn-terraform-provision-eks-cluster
+berkbenzer@berk-MBP cd learn-terraform-provision-eks-cluster
+berkbenzer@berk-MBP terraform init
+berkbenzer@berk-MBP terraform plan
+                        </code></pre>
+                    </div>
+					<br>
+					<li>I will not share entire plan but if you run without any changes it should be out put the same.</li>
+                    <div class="codebox">
+                        <pre><code class="language-hcl">
+Plan: 67 to add, 0 to change, 0 to destroy.
+                        </code></pre>
+                    </div>
+					<br>
+					<li>Output of <strong>terraform apply</strong> command. Enter <strong>"yes" </strong> or run the command <strong>terraform apply --auto-approve</strong></li>
+					<li>It will take 10 or max 15 minute to create EKS infrastructure. Login to AWS console and navigate to the Region that you install the cluster.</li>
 
-							<!-- Content -->
-								<section>
-									<header class="main">
-										<h1>Page is under Construction</h1>
-									</header>
-								</section>
+                    <!-- New Code Box for Execution Plan -->
+                    <div class="codebox">
+                        <pre><code class="language-hcl">
+Plan: 67 to add, 0 to change, 0 to destroy.
 
-						</div>
-					</div>
+Changes to Outputs:
+  + cluster_endpoint          = (known after apply)
+  + cluster_name              = (known after apply)
+  + cluster_security_group_id = (known after apply)
+  + region                    = "eu-west-2"
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
 
+  Enter a value:
+                        </code></pre>
+                    </div>
+                </section>
+            </div>
+        </div>
 
-                        <!-- Menu -->
-						<nav id="menu">
-							<header class="major">
-								<h2>Menu</h2>
-							</header>
-							<ul>
-								<li><a href="{% url 'homepage_view' %}">Home Page</a></li>
-								<li>
-									<span class="opener">DevOps</span>
-									<ul>
-										<li><a href="{% url 'aws_view' %}">Aws</a></li>
-										<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
-										<li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
-										<li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
-									</ul>						
-								</li>
-								<li>
-									<span class="opener">German Practice</span>
-									<ul>
-										<li><a href="{% url 'artickle_view' %}">Artikles</a></li>
-										<li><a href="{% url 'translation_view' %}">Translation</a></li>
-										<li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
-									</ul>
-								</li>
-							</nav>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
-
-						</div>
-					</div>
-
+        <!-- Sidebar -->
+			<div id="sidebar">
+				<div class="inner">
+        <!-- Menu and Footer sections as required -->
+		<nav id="menu">
+			<header class="major">
+				<h2>Menu</h2>
+			</header>
+			<ul>
+				<li><a href="{% url 'homepage_view' %}">Home Page</a></li>
+				<li>
+					<span class="opener">DevOps</span>
+					<ul>
+						<li><a href="{% url 'aws_view' %}">Aws</a></li>
+						<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
+						<li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
+						<li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
+					</ul>						
+				</li>
+				<li>
+					<span class="opener">German Practice</span>
+					<ul>
+						<li><a href="{% url 'artickle_view' %}">Artikles</a></li>
+						<li><a href="{% url 'translation_view' %}">Translation</a></li>
+						<li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+					</ul>
+				</li>
+			</nav>
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+				</footer>
+		
+				</div>
 			</div>
+		</div>
+   
 
-		<!-- Scripts -->
-			<script src="/static/assets/js/jquery.min.js"></script>
-			<script src="/static/assets/js/browser.min.js"></script>
-			<script src="/static/assets/js/breakpoints.min.js"></script>
-			<script src="/static/assets/js/util.js"></script>
-			<script src="/static/assets/js/main.js"></script>
-
-	</body>
+    <!-- Scripts -->
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/browser.min.js"></script>
+    <script src="/static/assets/js/breakpoints.min.js"></script>
+    <script src="/static/assets/js/util.js"></script>
+    <script src="/static/assets/js/main.js"></script>
+</body>
 </html>
