@@ -20,7 +20,7 @@ from post.views import home_view, homepage_view, artickle_view, kubernetes_view,
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
     path('', home_view, name='home_view'),
     path('home/', view=homepage_view, name='homepage_view'),
     path('artikles/', view=artickle_view, name='artickle_view'),
