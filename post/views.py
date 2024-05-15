@@ -24,6 +24,7 @@ def jenkins_view(request):
 def aws_view(request):
     return render(request, "aws.html", {})
 
+
 def terraform_view(request):
     return render(request, "terraform.html", {})
 

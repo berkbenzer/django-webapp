@@ -15,19 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from post.views import home_view, homepage_view, artickle_view, kubernetes_view,translation_view, verbs_view, jenkins_view, aws_view, terraform_view 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home_view'),
-    path('home.html/', homepage_view, name='homepage_view'),
-    path('artikles.html/', artickle_view, name='artickle_view'),
-    path('kubernetes.html/', kubernetes_view, name='kubernetes_view'),
-    path('translation.html/', translation_view, name='translation_view'),
-    path('verbs.html/', verbs_view, name='verbs_view'),
-    path('jenkins.html/',jenkins_view , name= 'jenkins_view'),
-    path('aws.html/',aws_view , name= 'aws_view'),
-    path('terraform.html/',terraform_view , name= 'terraform_view'),
+    path('home/', view=homepage_view, name='homepage_view'),
+    path('artikles/', view=artickle_view, name='artickle_view'),
+    path('kubernetes/', view=kubernetes_view, name='kubernetes_view'),
+    path('translation/', view=translation_view, name='translation_view'),
+    path('verbs/', view=verbs_view, name='verbs_view'),
+    path('jenkins/',view=jenkins_view , name= 'jenkins_view'),
+    path('aws/', view=aws_view , name= 'aws_view'),
+    path('terraform/', view=terraform_view , name= 'terraform_view'),
 ] 
