@@ -150,6 +150,6 @@ public_ip = get_public_ip()
 
 # Update ALLOWED_HOSTS dynamically
 ALLOWED_HOSTS = ['18.134.120.111', 'bergtechlab.com' ,'localhost', '127.0.0.1']
-
-CSRF_TRUSTED_ORIGINS = ['18.134.120.111', 'bergtechlab.com' ,'localhost', '127.0.0.1', '*.bergtechlab.com' ]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_TRUSTED_ORIGINS = [ 'https://bergtechlab.com', 'https://www.bergtechlab.com']
 
