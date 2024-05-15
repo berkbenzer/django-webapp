@@ -5,6 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="/static/assets/css/main.css" />
+    <style>        
+    #verbForm {
+        max-width: 400px; /* Limit the form width to 400px */
+        margin: right; /* Center the form horizontally */
+    }
+    #user_input {
+        width: 100%; /* Make the input field take the full width of the form */
+    }
+    </style>
 </head>
 <body class="is-preload">
     <div id="wrapper">
@@ -28,7 +37,6 @@
                             {% csrf_token %}
                             <input type="text" id="user_input" name="user_input" placeholder="Type here..." required autofocus>
                             <input type="submit" name="practice_verbs" value="Check">
-                            <input type="submit" name="quit" value="Quit">
                         </form>
                     {% else %}
                         <p>Start your practice by submitting the form.</p>
@@ -39,13 +47,6 @@
         <div id="sidebar">
             <div class="inner">
                   
-                <!-- Search -->
-					<section id="search" class="alt">
-						<form method="post" action="#">
-							<input type="text" name="query" id="query" placeholder="Search" />
-						</form>
-					</section>
-
                 <!-- Menu -->
                 <nav id="menu">
                     <header class="major">
