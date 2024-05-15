@@ -24,7 +24,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<p> <strong>Jenkins</strong></p>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 
@@ -38,9 +38,18 @@
 									</header>
 									<ul>
 										<li>This section describes how to get started with creating your Pipeline project in Jenkins and introduces you to the various ways that a Jenkinsfile can be created and stored.</li>
+										<li style="list-style-type: none;padding-left: 140px;"><strong>Step 1:</strong> Code Manually push to GitHub Repo</li>
+										<li style="list-style-type: none;padding-left: 140px;"><strong>Step 2:</strong> Jenkins take the Code and Build it as Docker Image.</li>
+										<li style="list-style-type: none;padding-left: 140px;"><strong>Step 3:</strong> Docker Image push to DockerHub Repo.</li>
+										<li style="list-style-type: none;padding-left: 140px;"><strong>Step 4:</strong> The Image download to the Deployment Ubuntu Server.</li>
+										<li style="list-style-type: none;padding-left: 140px;"><strong>Step 5:</strong> Docker container will be started.</li>
+										<br>
+										<img src="/static/images/Deployment.png" alt="Jenkins Unlock Screen" style="max-width: 60%; height: auto;">
+										<br>
+										<br>
 										<br>
 										<h2>Step - 1 Jenkins Installation</h2>
-										<p>This is some text below the image. <a href="https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-22-04">Detailed document</a> can be found in DigitalOcean.</p> 
+										<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-22-04">Detailed document</a> can be found in DigitalOcean.</p> 
 										<meta name="viewport" content="width=device-width, initial-scale=1.0">
 											
     									<title>Terminal Section</title>
@@ -172,14 +181,14 @@
 								<h2>Menu</h2>
 							</header>
 							<ul>
-								<li><a href="{% url 'home_view' %}">Home Page</a></li>
-								<li><a href="{% url 'about_view' %}">About me</a></li>
+								<li><a href="{% url 'homepage_view' %}">Home Page</a></li>
 								<li>
 									<span class="opener">DevOps</span>
 									<ul>
 										<li><a href="{% url 'aws_view' %}">Aws</a></li>
 										<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
-										<li><a href="{% url 'terraform_view' %}">Terraform</a></li>
+										<li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
+										<li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
 									</ul>						
 								</li>
 								<li>

@@ -4,13 +4,10 @@ from .practice_verbs import GermanPractice
 
 
 def home_view(request):
-    return render(request, "index.html", {})
+    return render(request, "home.html", {})
 
 def homepage_view(request):
     return render(request, "home.html", {})
-
-def about_view(request):
-    return render(request, "about.html", {})
 
 def artickle_view(request):
     return render(request, "artikles.html", {})
@@ -30,9 +27,8 @@ def aws_view(request):
 def terraform_view(request):
     return render(request, "terraform.html", {})
 
-def about_view(request):
-    return render(request, "about.html", {})
-
+def kubernetes_view(request):
+    return render(request, "kubernetes.html", {})
 
 def verbs_view(request):
     practice = GermanPractice()

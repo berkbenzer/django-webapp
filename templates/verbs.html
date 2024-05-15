@@ -12,7 +12,7 @@
             <div class="inner">
                     
                 <header id="header">
-                    <a href="{% url 'home_view' %}" class="logo"><strong>Verb Conjugation Practice</strong> by HTML5 UP</a>
+                    <p href="{% url 'home_view' %}" class="logo"><strong>Verb Conjugation Practice</strong></p>
                 </header>
 
                 <section>
@@ -24,9 +24,9 @@
                     {% endif %}
                     {% if chosen_verb %}
                         <p>Please enter the correct form of "{{ chosen_verb }}" for "{{ chosen_item }}":</p>
-                        <form method="post" action="{% url 'verbs_view' %}">
+                        <form method="post" action="{% url 'verbs_view' %}" id="verbForm">
                             {% csrf_token %}
-                            <input type="text" name="user_input" placeholder="Type here..." required>
+                            <input type="text" id="user_input" name="user_input" placeholder="Type here..." required autofocus>
                             <input type="submit" name="practice_verbs" value="Check">
                             <input type="submit" name="quit" value="Quit">
                         </form>
@@ -52,14 +52,14 @@
                         <h2>Menu</h2>
                     </header>
                     <ul>
-                        <li><a href="{% url 'home_view' %}">Home Page</a></li>
-                        <li><a href="{% url 'about_view' %}">About me</a></li>
+                        <li><a href="{% url 'homepage_view' %}">Home Page</a></li>
                         <li>
                             <span class="opener">DevOps</span>
                             <ul>
                                 <li><a href="{% url 'aws_view' %}">Aws</a></li>
                                 <li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
-                                <li><a href="{% url 'terraform_view' %}">Terraform</a></li>
+                                <li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
+                                <li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
                             </ul>						
                         </li>
                         <li>

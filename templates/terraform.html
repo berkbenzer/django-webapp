@@ -1,100 +1,194 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Generic - Editorial by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/static/assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+    <title>Generic - Editorial by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/static/assets/css/main.css" />
+    <link rel="stylesheet" href="/static/assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" />
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!-- Prism JS for code syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <header id="header">
+                    <p> <strong>Terraform</strong></p>
+                    <!-- Social Icons -->
+                </header>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+                <!-- Content -->
+                <section>
+                    <header class="main">
+                        <h1>IaaC Terraform</h1>
+                        <li>HashiCorp Terraform is an infrastructure as code tool that lets you define both cloud and on-prem
+                        resources in human-readable configuration files that you can version, reuse, and share.</li>
+                        <h2>Hands On: Popular Cloud Providers</h2>
+                        <ul>
+                            <li>Amazon Web Services</li>
+                            <li>Azure</li>
+                            <li>Google Cloud Platform</li>
+                            <li>Oracle Cloud Infrastructure</li>
+                            <li>Docker</li>
+                        </ul>
 
-							<!-- Header -->
-								<header id="header">
-									<a href="/static/assets/css/main.css" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-									</ul>
-								</header>
+                        <h2>First Terraform State</h2>
+                        <li>Lets check the Stopped Instances with Terraform and then startup.</li>
+						<li>Check terraform <strong>providers.tf</strong> file.</li>
 
-							<!-- Content -->
-								<section>
-									<header class="main">
-										<h1>Page is under Construction</h1>
-									</header>
-								</section>
+                    </header>
+					<style>
+					  .codebox {
+						background-color: #f5f5f5; /* Change this to your desired background color */
+						border: none; /* Removes any border from the codebox */
+					  }
+					  
+					  .codebox pre {
+						border: none; /* Removes any border from the pre element */
+						background: none; /* Removes the default background */
+					  }
+					  
+					  .codebox code {
+						border: none; /* Removes any border from the code element */
+						background: none; /* Removes the default background */
+					  }
+					</style>
 
-						</div>
-					</div>
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
 
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
+					<div class="codebox">
+                        <pre><code class="language-hcl">
+berk-MBP start_stopped % cat provders.tf
+terraform {
+  required_providers {
+	aws = {
+	  source = "hashicorp/aws"
+	}
+  }
+}
 
-                        <!-- Menu -->
-						<nav id="menu">
-							<header class="major">
-								<h2>Menu</h2>
-							</header>
-							<ul>
-								<li><a href="{% url 'home_view' %}">Home Page</a></li>
-								<li><a href="{% url 'about_view' %}">About me</a></li>
-								<li>
-									<span class="opener">DevOps</span>
-									<ul>
-										<li><a href="{% url 'aws_view' %}">Aws</a></li>
-										<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
-										<li><a href="{% url 'terraform_view' %}">Terraform</a></li>
-									</ul>						
-								</li>
-								<li>
-									<span class="opener">German Practice</span>
-									<ul>
-										<li><a href="{% url 'artickle_view' %}">Artikles</a></li>
-										<li><a href="{% url 'translation_view' %}">Translation</a></li>
-										<li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
-									</ul>
-								</li>
-							</nav>
+provider "aws" {
+  region  = "eu-west-2"
+  profile = "tf-access-user"
+}
+							
+                        </code></pre>
+                    </div>
+					<br>
+					<li>Check terraform <strong>main.tf</strong> file.</li>
 
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+                    <div class="codebox">
+                        <pre><code class="language-hcl">
+berk-MBP start_stopped % cat main.tf
 
-						</div>
-					</div>
+data "aws_instances" "stopped_instances" {
+  instance_state_names = ["stopped"]
+}
 
+resource "null_resource" "start_instances" {
+  count = length(data.aws_instances.stopped_instances.ids)
+  provisioner "local-exec" {
+    command = "aws ec2 start-instances --instance-ids ${data.aws_instances.stopped_instances.ids[count.index]}"
+  }
+}
+                        </code></pre>
+                    </div>
+					<br>
+					<li>Output of <strong>terraform plan</strong> command.</li>
+
+                    <!-- New Code Box for Execution Plan -->
+                    <div class="codebox">
+                        <pre><code class="language-hcl">
+data.aws_instances.stopped_instances: Reading...
+data.aws_instances.stopped_instances: Read complete after 0s [id=eu-west-2]
+
+Terraform used the selected providers to generate the following execution plan.
+ Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # null_resource.start_instances[0] will be created
+  + resource "null_resource" "start_instances" {
+      + id = (known after apply)
+    }
+
+  # null_resource.start_instances[1] will be created
+  + resource "null_resource" "start_instances" {
+      + id = (known after apply)
+    }
+
+  # null_resource.start_instances[2] will be created
+  + resource "null_resource" "start_instances" {
+      + id = (known after apply)
+    }
+
+  # null_resource.start_instances[3] will be created
+  + resource "null_resource" "start_instances" {
+      + id = (known after apply)
+    }
+
+Plan: 4 to add, 0 to change, 0 to destroy.
+                        </code></pre>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+			<div id="sidebar">
+				<div class="inner">
+
+					<!-- Search -->
+						<section id="search" class="alt">
+							<form method="post" action="#">
+								<input type="text" name="query" id="query" placeholder="Search" />
+							</form>
+						</section>
+        <!-- Menu and Footer sections as required -->
+		<nav id="menu">
+			<header class="major">
+				<h2>Menu</h2>
+			</header>
+			<ul>
+				<li><a href="{% url 'homepage_view' %}">Home Page</a></li>
+				<li>
+					<span class="opener">DevOps</span>
+					<ul>
+						<li><a href="{% url 'aws_view' %}">Aws</a></li>
+						<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
+						<li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
+						<li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
+					</ul>						
+				</li>
+				<li>
+					<span class="opener">German Practice</span>
+					<ul>
+						<li><a href="{% url 'artickle_view' %}">Artikles</a></li>
+						<li><a href="{% url 'translation_view' %}">Translation</a></li>
+						<li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+					</ul>
+				</li>
+			</nav>
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+				</footer>
+		
+				</div>
 			</div>
+		</div>
+   
 
-		<!-- Scripts -->
-			<script src="/static/assets/js/jquery.min.js"></script>
-			<script src="/static/assets/js/browser.min.js"></script>
-			<script src="/static/assets/js/breakpoints.min.js"></script>
-			<script src="/static/assets/js/util.js"></script>
-			<script src="/static/assets/js/main.js"></script>
-
-	</body>
+    <!-- Scripts -->
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/browser.min.js"></script>
+    <script src="/static/assets/js/breakpoints.min.js"></script>
+    <script src="/static/assets/js/util.js"></script>
+    <script src="/static/assets/js/main.js"></script>
+</body>
 </html>
