@@ -28,6 +28,7 @@
                         <ol>HashiCorp Terraform is an infrastructure as code tool that lets you define both cloud and on-prem
                         resources in human-readable configuration files that you can version, reuse, and share.</ol>
                         <ol>Official Web Site of <a href="https://www.terraform.io/" target="_blank">Terraform</a>.</ol>
+                        <ol> This <a href="https://www.udemy.com/course/terraform-hands-on-labs/?couponCode=LEADERSALE24A" target="_blank">Udemy</a> course It gives you solid understanding about Terraform.</ol>
 
               
                         <h2>Hands On: Popular Cloud Providers</h2>
@@ -101,11 +102,57 @@ resource "aws_subnet" "public_subnet" {
                         </code></pre>
                     </div>
 					<br>
-					<li>Output of <strong>terraform plan</strong> command.</li>
+					<li>Lets create a <strong>Security Group</strong>.</li>
 
                     <!-- New Code Box for Execution Plan -->
                     <div class="codebox">
                         <pre><code class="language-hcl">
+resource "aws_security_group" "custom_sg" {
+  vpc_id = aws_vpc.custom_vpc.id
+  
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = -1
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    ##Kubernetes
+    from_port = 6443
+    to_port = 6443
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
+  ingress {
+    from_port = 2379
+    to_port = 2379
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    "Name" = "sg_custom"
+    "Description" = "sg_custom"
+
+  }  
+}
 
                         </code></pre>
                     </div>
