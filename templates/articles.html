@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>bergtechlab-Artikles</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/static/assets/css/main.css" />
+	<style>        
+		#artForm {
+			max-width: 400px; /* Limit the form width to 400px */
+			margin: right; /* Center the form horizontally */
+		}
+		#user_input {
+			width: 100%; /* Make the input field take the full width of the form */
+		}
+		</style>
+	
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var articleInput = document.getElementById("article-input");
+            articleInput.focus();
+
+            document.getElementById("practice-form").addEventListener("submit", function() {
+                setTimeout(function() {
+                    articleInput.focus();
+                }, 10);
+            });
+        });
+    </script>
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <p><strong>Article</strong></p>
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+                        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+                    </ul>
+                </header>
+
+                <!-- Content -->
+                <section>
+                    <header class="main">
+                        <h2>Der, Die, Das</h2>
+					</header>
+                        {% if result %}
+                            <p>{{ result }}</p>
+                        {% endif %}
+
+                        {% if new_word %}
+                            <form method="get" action="">
+                                <button type="submit">Try another word</button>
+                            </form>
+                        {% else %}
+                            <p>
+                                Please enter the correct article for '{{ german_word }}' ({{ turkish_meaning }}):
+                            </p>
+                            <form method="post" id="artForm">
+                                {% csrf_token %}
+                                <input type="hidden" name="german_word" value="{{ german_word }}">
+                                <input type="hidden" name="turkish_meaning" value="{{ turkish_meaning }}">
+                                <input type="hidden" name="correct_article" value="{{ correct_article }}">
+                                <input type="text" name="article" id="article-input" placeholder="Type here...">
+                                <button type="submit">Check</button>
+                            </form>
+                        {% endif %}
+
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <li><a href="{% url 'homepage_view' %}">Home Page</a></li>
+                        <li>
+                            <span class="opener">DevOps</span>
+                            <ul>
+                                <li><a href="{% url 'index_view' %}">Index</a></li>
+                                <li><a href="{% url 'aws_view' %}">Aws</a></li>
+                                <li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
+                                <li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
+                                <li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">German Practice</span>
+                            <ul>
+                                <li><a href="{% url 'artickle_view' %}">Artikles</a></li>
+                                <li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <section>
+                    <header class="major">
+                        <h2>Get in touch</h2>
+                    </header>
+                    <ul class="contact">
+                        <li class="icon solid fa-envelope"><a href="mailto:bergtechlab@gmail.com">bergtechlab@gmail.com</a></li>
+                        <li class="icon solid fa-phone">(+49)0000000000</li>
+                        <li class="icon solid fa-home">Germany</li>
+                    </ul>
+                </section>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                </footer>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/browser.min.js"></script>
+    <script src="/static/assets/js/breakpoints.min.js"></script>
+    <script src="/static/assets/js/util.js"></script>
+    <script src="/static/assets/js/main.js"></script>
+
+</body>
+</html>
