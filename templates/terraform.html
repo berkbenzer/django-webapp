@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Generic - Editorial by HTML5 UP</title>
+    <title>bergtechlab-Terraform</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="/static/assets/css/main.css" />
@@ -40,8 +40,8 @@
                         </ul>
 
                         <h2>First Terraform State</h2>
-                        <h3>Find Stopped EC2 Instances</h3>
-                        <li>Lets check the Stopped Instances with Terraform and then startup.</li>
+                        <h3>Create a VPC</h3>
+                        <li>Lets create VPC with Terraform. We will put into a single file at the end this is just a showing how to use each reouserces. </li>
 						<li>Check terraform <strong>providers.tf</strong> file.</li>
 
                     </header>
@@ -49,7 +49,7 @@
 					  .codebox {
 						background-color: #f5f5f5; /* Change this to your desired background color */
 						border: none; /* Removes any border from the codebox */
-            width: 80%;
+            width: 60%;
 					  }
 					  
 					  .codebox pre {
@@ -67,39 +67,37 @@
 
 					<div class="codebox">
                         <pre><code class="language-hcl">
-berk-MBP start_stopped % cat provders.tf
-terraform {
-  required_providers {
-	aws = {
-	  source = "hashicorp/aws"
-	}
-  }
+provider "aws" {
+  region = "eu-west-1"
+
 }
 
-provider "aws" {
-  region  = "eu-west-2"
-  profile = "tf-access-user"
-}
-							
+resource "aws_vpc" "custom_vpc"{
+
+    cidr_block = "10.0.0.0/16"
+    instance_tenancy = "default"
+    tags = {
+        "Name" = "custom_vpc"
+    }
+
                         </code></pre>
                     </div>
 					<br>
-					<li>Check terraform <strong>main.tf</strong> file.</li>
+					<li>Check terraform <strong>subnet.tf</strong> file.</li>
+
 
                     <div class="codebox">
                         <pre><code class="language-hcl">
-berk-MBP start_stopped % cat main.tf
+resource "aws_subnet" "public_subnet" {
+  vpc_id = aws_vpc.custom_vpc.id
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "eu-west-1a"
+  map_public_ip_on_launch = true
 
-data "aws_instances" "stopped_instances" {
-  instance_state_names = ["stopped"]
-}
-
-resource "null_resource" "start_instances" {
-  count = length(data.aws_instances.stopped_instances.ids)
-  provisioner "local-exec" {
-    command = "aws ec2 start-instances --instance-ids ${data.aws_instances.stopped_instances.ids[count.index]}"
+  tags = {
+    "Name" = "10.0.2.0 - eu-west-1a"
   }
-}
+
                         </code></pre>
                     </div>
 					<br>
@@ -108,36 +106,7 @@ resource "null_resource" "start_instances" {
                     <!-- New Code Box for Execution Plan -->
                     <div class="codebox">
                         <pre><code class="language-hcl">
-data.aws_instances.stopped_instances: Reading...
-data.aws_instances.stopped_instances: Read complete after 0s [id=eu-west-2]
 
-Terraform used the selected providers to generate the following execution plan.
- Resource actions are indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-
-  # null_resource.start_instances[0] will be created
-  + resource "null_resource" "start_instances" {
-      + id = (known after apply)
-    }
-
-  # null_resource.start_instances[1] will be created
-  + resource "null_resource" "start_instances" {
-      + id = (known after apply)
-    }
-
-  # null_resource.start_instances[2] will be created
-  + resource "null_resource" "start_instances" {
-      + id = (known after apply)
-    }
-
-  # null_resource.start_instances[3] will be created
-  + resource "null_resource" "start_instances" {
-      + id = (known after apply)
-    }
-
-Plan: 4 to add, 0 to change, 0 to destroy.
                         </code></pre>
                     </div>
                 </section>
