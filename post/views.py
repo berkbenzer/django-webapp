@@ -31,6 +31,10 @@ def terraform_view(request):
 def kubernetes_view(request):
     return render(request, "kubernetes.html", {})
 
+
+def index_view(request):
+    return render(request, "techindex.html", {})
+
 def verbs_view(request):
     practice = GermanPractice()
     if request.method == 'POST':
