@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from post.views import home_view, homepage_view,practice_articles , kubernetes_view, index_view, verbs_view, jenkins_view, aws_view, terraform_view 
+from post.views import home_view, homepage_view,practice_articles , ssl_view, kubernetes_view, index_view, verbs_view, jenkins_view, aws_view, terraform_view 
 
 
 urlpatterns = [
@@ -30,5 +30,6 @@ urlpatterns = [
     path('aws/', view=aws_view , name= 'aws_view'),
     path('terraform/', view=terraform_view , name= 'terraform_view'),
     path('techindex/', view=index_view , name= 'index_view'),
+     path('ssl/', view=ssl_view , name= 'ssl_view'),
 
 ] 

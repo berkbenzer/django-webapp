@@ -24,35 +24,20 @@
                 <!-- Content -->
                 <section>
                     <header class="main">
-                        <h1>IaaC Terraform</h1>
-                        <ol>HashiCorp Terraform is an infrastructure as code tool that lets you define both cloud and on-prem
-                        resources in human-readable configuration files that you can version, reuse, and share.</ol>
-                        <ol>Official Web Site of <a href="https://www.terraform.io/" target="_blank">Terraform</a>.</ol>
-                        <ol> This <a href="https://www.udemy.com/course/terraform-hands-on-labs/?couponCode=LEADERSALE24A" target="_blank">Udemy</a> course It gives you solid understanding about Terraform.</ol>
+                        <h1>SSL/TLS Automation</h1>
+                        <ol>In this section we will automate our SSL certifaction process. Currently our certifaction will expire in 3 months.
+                        We will use Certbot for to automate this process with using Certbot there are others ways to build automation like you can use Terraform.
+						You can find the <a href="https://www.inmotionhosting.com/support/website/ssl/lets-encrypt-ssl-ubuntu-with-certbot/" target="_blank">Certbot</a>  installation to Ubuntu.</ol>
 
-              
-                        <h2>Hands On: Popular Cloud Providers</h2>
-                        <ul>
-                            <li>Amazon Web Services</li>
-                            <li>Azure</li>
-                            <li>Google Cloud Platform</li>
-                            <li>Oracle Cloud Infrastructure</li>
-                            <li>Docker</li>
-                        </ul>
-
-                        <h2>First Terraform State</h2>
-                        <h3>Create a VPC</h3>
-                        <li>Lets create VPC with Terraform. We will put into a single file at the end this is just a showing how to use each reouserces. </li>
-						<li>Check terraform <strong>providers.tf</strong> file.</li>
 
                     </header>
 					<style>
 					  .codebox {
 						background-color: #f5f5f5; /* Change this to your desired background color */
 						border: none; /* Removes any border from the codebox */
-            width: 60%;
+            			width: 60%;
 					  }
-					  
+	  
 					  .codebox pre {
 						border: none; /* Removes any border from the pre element */
 						background: none; /* Removes the default background */
@@ -62,100 +47,97 @@
 						border: none; /* Removes any border from the code element */
 						background: none; /* Removes the default background */
 					  }
+					  .codebox-1 {
+						background-color: #f5f5f5; /* Change this to your desired background color */
+						border: none; /* Removes any border from the codebox */
+            			width: 105%;
+					  }
+					  .codebox-1 pre {
+						border: none; /* Removes any border from the pre element */
+						background: none; /* Removes the default background */
+					  }
+					  
+					  .codebox-1 code {
+						border: none; /* Removes any border from the code element */
+						background: none; /* Removes the default background */
+					  }
 					</style>
 
-
+					<ol>Lets update our Ubuntu Server</ol>
 
 					<div class="codebox">
                         <pre><code class="language-hcl">
-provider "aws" {
-  region = "eu-west-1"
-
-}
-
-resource "aws_vpc" "custom_vpc"{
-
-    cidr_block = "10.0.0.0/16"
-    instance_tenancy = "default"
-    tags = {
-        "Name" = "custom_vpc"
-    }
-
+ubuntu@ip-10-1-15-12:~$ sudo apt update
                         </code></pre>
                     </div>
 					<br>
-					<li>Check terraform <strong>subnet.tf</strong> file.</li>
-
+					<li>Check for installed <strong>timers</strong> .</li>
 
                     <div class="codebox">
                         <pre><code class="language-hcl">
-resource "aws_subnet" "public_subnet" {
-  vpc_id = aws_vpc.custom_vpc.id
-  cidr_block = "10.0.2.0/24"
-  availability_zone = "eu-west-1a"
-  map_public_ip_on_launch = true
-
-  tags = {
-    "Name" = "10.0.2.0 - eu-west-1a"
-  }
-
+systemctl list-timers
                         </code></pre>
                     </div>
 					<br>
-					<li>Lets create a <strong>Security Group</strong>.</li>
+					<li>We search for <strong>Certbot</strong> output.</li>
 
                     <!-- New Code Box for Execution Plan -->
-                    <div class="codebox">
+                    <div class="codebox-1">
                         <pre><code class="language-hcl">
-resource "aws_security_group" "custom_sg" {
-  vpc_id = aws_vpc.custom_vpc.id
-  
-  egress {
-    from_port = 0
-    to_port = 0
-    protocol = -1
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+NEXT                   LEFT LAST                 PASSED UNIT
+Fri 2024-05-17 10:00   49s Fri 2024-05-17 09:50  sysstat-collect.timer
+<strong>Fri 2024-05-17 13:21  3h 22min Fri 2024-05-17    certbot.timer</strong>
+                        </code></pre>
+                    </div>
+					<li>Search for the timer file.</li>
+					<div class="codebox-1">
+                        <pre><code class="language-hcl">
+ubuntu@ip-10-1-15-12:~$ sudo find / -name certbot.timer
+/usr/lib/systemd/system/certbot.timer
+/var/lib/systemd/deb-systemd-helper-enabled/timers.target.wants/certbot.timer
+/etc/systemd/system/timers.target.wants/certbot.timer
+                        </code></pre>
+                    </div>
+					<li>Search for the timer file.</li>
+					<div class="codebox-1">
+                        <pre><code class="language-hcl">
+cat /usr/lib/systemd/system/certbot.timer
+[Unit]
+Description=Run certbot twice daily
 
-  ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+[Timer]
+OnCalendar=*-*-* 00,12:00:00  <<<<<<  Everyday Noon timer will be executed.
+RandomizedDelaySec=43200
+Persistent=true
 
-  ingress {
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    ##Kubernetes
-    from_port = 6443
-    to_port = 6443
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-
-  ingress {
-    from_port = 2379
-    to_port = 2379
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    "Name" = "sg_custom"
-    "Description" = "sg_custom"
-
-  }  
-}
+[Install]
+WantedBy=timers.target
+                        </code></pre>
+                    </div>
+					<li>Run the service with the command below.</li>
+					<div class="codebox">
+                        <pre><code class="language-hcl">
+systemctl start certbot.timer; 
+systemctl enabled certbot.timer; 
 
                         </code></pre>
                     </div>
+
+					<br>
+					<li>Service out should be like this then you successfully set a certifaction timer.</li>
+					<br>
+					<div class="codebox-1">
+                        <pre><code class="language-hcl">
+sudo systemctl status certbot.timer
+certbot.timer - Run certbot twice daily
+ Loaded: loaded (/usr/lib/systemd/system/certbot.timer; enabl
+ Active: active (waiting) since Wed 2024-05-15 17:34:19 UTC; 1 day 17h ago
+ Trigger: Fri 2024-05-17 22:16:25 UTC; 11h left
+ Triggers: ● certbot.service
+
+May 15 17:34:19 ip-10-1-15-12 systemd[1
+						</code></pre>
+					</div>
                 </section>
             </div>
         </div>
@@ -177,8 +159,8 @@ resource "aws_security_group" "custom_sg" {
 						<li><a href="{% url 'aws_view' %}">Aws</a></li>
 						<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
 						<li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
-            <li><a href="{% url 'ssl_view' %}">SSL/TLS Automation</a></li>
-            <li><a href="{% url 'terraform_view' %}">Terraform</a></li>
+						<li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
+						<li><a href="{% url 'ssl_view' %}">SSL/TLS Automation</a></li>
 					</ul>						
 				</li>
 				<li>

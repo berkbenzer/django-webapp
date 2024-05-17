@@ -18,6 +18,10 @@ def verbs_view(request):
 def jenkins_view(request):
     return render(request, "jenkins.html", {})
 
+
+def ssl_view(request):
+    return render(request, "ssl.html", {})
+
 def aws_view(request):
     return render(request, "aws.html", {})
 
