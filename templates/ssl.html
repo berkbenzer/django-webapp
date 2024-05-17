@@ -17,100 +17,83 @@
         <div id="main">
             <div class="inner">
                 <header id="header">
-                    <p> <strong>This Page is still under Construction Terraform</strong></p>
-                    <!-- Social Icons -->
+                    <p><strong>This Page is still under Construction Terraform</strong></p>
                 </header>
 
-                <!-- Content -->
                 <section>
                     <header class="main">
                         <h1>SSL/TLS Automation</h1>
                         <ol>In this section we will automate our SSL certifaction process. Currently our certifaction will expire in 3 months.
-                        We will use Certbot for to automate this process with using Certbot there are others ways to build automation like you can use Terraform.
-						You can find the <a href="https://www.inmotionhosting.com/support/website/ssl/lets-encrypt-ssl-ubuntu-with-certbot/" target="_blank">Certbot</a>  installation to Ubuntu.</ol>
-
-
+                        We will use Certbot to automate this process. You can find the <a href="https://www.inmotionhosting.com/support/website/ssl/lets-encrypt-ssl-ubuntu-with-certbot/" target="_blank">Certbot</a> installation for Ubuntu.</ol>
                     </header>
-					<style>
-					  .codebox {
-						background-color: #f5f5f5; /* Change this to your desired background color */
-						border: none; /* Removes any border from the codebox */
-            			width: 40%;
-						font-size: 12px;
-					  }
-	  
-					  .codebox pre {
-						border: none; /* Removes any border from the pre element */
-						background: none; /* Removes the default background */
-					  }
-					  
-					  .codebox code {
-						border: none; /* Removes any border from the code element */
-						background: none; /* Removes the default background */
-					  }
-					  .codebox-1 {
-						background-color: #f5f5f5; /* Change this to your desired background color */
-						border: none; /* Removes any border from the codebox */
-            			width: 50%;
-						font-size: 12px;
-					  }
-					  .codebox-1 pre {
-						border: none; /* Removes any border from the pre element */
-						background: none; /* Removes the default background */
-						font-size: 12px;
-					  }
-					  
-					  .codebox-1 code {
-						border: none; /* Removes any border from the code element */
-						background: none; /* Removes the default background */
-					  }
-					</style>
+                    <style>
+                        .codebox {
+                            background-color: #f5f5f5;
+                            border: none;
+                            width: 40%;
+                            font-size: 12px;
+                        }
 
-					<ol>Lets update our Ubuntu Server</ol>
+                        .codebox pre, .codebox code {
+                            border: none;
+                            background: none;
+                        }
 
-					<div class="codebox">
-                        <pre><code class="language-hcl">
-ubuntu@ip-10-1-15-12:~$ sudo apt update
+                        .codebox-1 {
+                            background-color: #f5f5f5;
+                            border: none;
+                            width: 70%;
+                            font-size: 12px;
+                        }
+
+                        .codebox-1 pre, .codebox-1 code {
+                            border: none;
+                            background: none;
+                            font-size: 12px;
+                        }
+                    </style>
+
+                    <ol>Let's update our Ubuntu Server</ol>
+                    <div class="codebox">
+                        <pre><code class="language-bash">
+sudo apt update
                         </code></pre>
                     </div>
-					<br>
-					<li>Check for installed <strong>timers</strong> .</li>
-
+                    <br>
+                    <li>Check for installed <strong>timers</strong>.</li>
                     <div class="codebox">
-                        <pre><code class="language-hcl">
+                        <pre><code class="language-bash">
 systemctl list-timers
                         </code></pre>
                     </div>
-					<br>
-					<li>We search for <strong>Certbot</strong> output.</li>
-
-                    <!-- New Code Box for Execution Plan -->
+                    <br>
+                    <li>We search for <strong>Certbot</strong> output.</li>
                     <div class="codebox-1">
-                        <pre><code class="language-hcl">
+                        <pre><code class="language-bash">
 NEXT                   LEFT LAST                 PASSED UNIT
 Fri 2024-05-17 10:00   49s Fri 2024-05-17 09:50  sysstat-collect.timer
 <strong>Fri 2024-05-17 13:21  3h 22min Fri 2024-05-17    certbot.timer</strong>
                         </code></pre>
                     </div>
-					<li>Search for the timer file.</li>
-					<div class="codebox-1">
-                        <pre><code class="language-hcl">
-ubuntu@ip-10-1-15-12:~$ sudo find / -name certbot.timer
+                    <li>Search for the timer file.</li>
+                    <div class="codebox-1">
+                        <pre><code class="language-bash">
+sudo find / -name certbot.timer
 /usr/lib/systemd/system/certbot.timer
 /var/lib/systemd/deb-systemd-helper-enabled/timers.target.wants/certbot.timer
 /etc/systemd/system/timers.target.wants/certbot.timer
                         </code></pre>
                     </div>
-					<li>Search for the timer file.</li>
-					<div class="codebox-1">
-                        <pre><code class="language-hcl">
+                    <li>Search for the timer file.</li>
+                    <div class="codebox">
+                        <pre><code class="language-bash">
 find / -name certbot.timer
 cat /usr/lib/systemd/system/certbot.timer
-						</code></pre>
-						</div>
-						<li>Check the service configuration.</li>
-						<div class="codebox-1">
-							<pre><code class="language-hcl">
+                        </code></pre>
+                    </div>
+                    <li>Check the service configuration.</li>
+                    <div class="codebox-1">
+                        <pre><code class="language-bash">
 [Unit]
 Description=Run certbot twice daily
 
@@ -123,16 +106,17 @@ Persistent=true
 WantedBy=timers.target
                         </code></pre>
                     </div>
-					<li>Run the service with the command below.</li>
-					<div class="codebox">
+                    <li>Run the service with the command below.</li>
+                    <div class="codebox">
                         <pre><code class="language-hcl">
 systemctl start certbot.timer; 
-systemctl enabled certbot.timer; 
-
+systemctl enable certbot.timer;
                         </code></pre>
                     </div>
-					<li>Service out should be like this then you successfully set a certifaction timer.</li>
-					<div class="codebox-1">
+                    <br>
+                    <li>Service output should be like this, indicating you have successfully set a certification timer.</li>
+                    <br>
+                    <div class="codebox-1">
                         <pre><code class="language-hcl">
 sudo systemctl status certbot.timer
 certbot.timer - Run certbot twice daily
@@ -142,12 +126,13 @@ certbot.timer - Run certbot twice daily
  Triggers: ● certbot.service
 
 May 15 17:34:19 ip-10-1-15-12 systemd[1
-						</code></pre>
-					</div>
-					<li>With this script you can check the how manys left before the certificates expired and you can write the output the file and create warning.</li>
-					<div class="codebox-1">
+                        </code></pre>
+                    </div>
+                    <br>
+                    <li>Bash script can be downloaded from <a href="https://github.com/berkbenzer/Linux-RHEL/tree/master" target="_blank">Github</a> Repo.</li>
+                    
+                    <div class="codebox-1">
                         <pre><code class="language-hcl">
-#!/bin/bash
 DOMAIN="example.com"
 PORT="443"
 LOG_FILE="ssl_check.log"
@@ -155,77 +140,79 @@ LOG_FILE="ssl_check.log"
 CERT_FILE="/etc/letsencrypt/live/$DOMAIN/fullchain.pem"
 
 if [ -z "$CERT_FILE" ]; then
-	echo "$(date): Certificate file for $DOMAIN not found." | tee -a $LOG_FILE
-	exit 1
+    echo "$(date): Certificate file for $DOMAIN not found."  \
+    | tee -a $LOG_FILE
+    exit 1
 fi
 
-EXPIRY_DATE=$(openssl x509 -in "$CERT_FILE" -noout -enddate 2>/dev/null | cut -d= -f2)
-
+EXPIRY_DATE=$(openssl x509 -in "$CERT_FILE" -noout -enddate 2>/dev/null \
+| cut -d= -f2)
 if [ -z "$EXPIRY_DATE" ]; then
-	echo "$(date): Failed to retrieve the expiration date for the SSL certificate of $DOMAIN." | tee -a $LOG_FILE
-	exit 1
+    echo "$(date): Failed to retrieve the date for the SSL certificate of $DOMAIN." \
+     | tee -a $LOG_FILE
+    exit 1
 fi
+
 
 EXPIRY_DATE_SECONDS=$(date -d "$EXPIRY_DATE" +%s)
 CURRENT_DATE_SECONDS=$(date +%s)
 DAYS_UNTIL_EXPIRY=$(( ($EXPIRY_DATE_SECONDS - $CURRENT_DATE_SECONDS) / 86400 ))
-echo "$(date): The SSL certificate for $DOMAIN will expire on $EXPIRY_DATE ($DAYS_UNTIL_EXPIRY days from now)." | tee -a $LOG_FILE
-						</code></pre>
-					</div>
+echo "$(date): The SSL certificate for $DOMAIN will expire on \
+$EXPIRY_DATE ($DAYS_UNTIL_EXPIRY days from now)." | tee -a $LOG_FILE
+
+                               
+                     </code></pre>
+                    </div>
                 </section>
             </div>
         </div>
 
         <!-- Sidebar -->
-			<div id="sidebar">
-				<div class="inner">
-        <!-- Menu and Footer sections as required -->
-		<nav id="menu">
-			<header class="major">
-				<h2>Menu</h2>
-			</header>
-			<ul>
-				<li><a href="{% url 'homepage_view' %}">Home Page</a></li>
-				<li>
-					<span class="opener">DevOps</span>
-					<ul>
-            <li><a href="{% url 'index_view' %}">Index</a></li>
-						<li><a href="{% url 'aws_view' %}">Aws</a></li>
-						<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
-						<li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
-						<li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
-						<li><a href="{% url 'ssl_view' %}">SSL/TLS Automation</a></li>
-					</ul>						
-				</li>
-				<li>
-					<span class="opener">German Practice</span>
-					<ul>
-						<li><a href="{% url 'artickle_view' %}">Artikles</a></li>
-						<li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
-					</ul>
-				</li>
-			</nav>
-      <section>
-        <header class="major">
-          <h2>Get in touch</h2>
-        </header>
-        <ul class="contact">
-			<li class="icon solid fa-envelope">
-				bergtechlab@gmail.com
-			</li>
-			<li class="icon solid fa-phone">(+49)0000000000</li>
-          <li class="icon solid fa-home">Germany</li>
-        </ul>
-      </section>
-				<!-- Footer -->
-				<footer id="footer">
-					<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-				</footer>
-		
-				</div>
-			</div>
-		</div>
-   
+        <div id="sidebar">
+            <div class="inner">
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <li><a href="{% url 'homepage_view' %}">Home Page</a></li>
+                        <li>
+                            <span class="opener">DevOps</span>
+                            <ul>
+                                <li><a href="{% url 'index_view' %}">Index</a></li>
+                                <li><a href="{% url 'aws_view' %}">Aws</a></li>
+                                <li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
+                                <li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
+                                <li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
+                                <li><a href="{% url 'ssl_view' %}">SSL/TLS Automation</a></li>
+                            </ul>                        
+                        </li>
+                        <li>
+                            <span class="opener">German Practice</span>
+                            <ul>
+                                <li><a href="{% url 'artickle_view' %}">Artikles</a></li>
+                                <li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <section>
+                    <header class="major">
+                        <h2>Get in touch</h2>
+                    </header>
+                    <ul class="contact">
+                        <li class="icon solid fa-envelope">bergtechlab@gmail.com</li>
+                        <li class="icon solid fa-phone">(+49)0000000000</li>
+                        <li class="icon solid fa-home">Germany</li>
+                    </ul>
+                </section>
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                </footer>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="/static/assets/js/jquery.min.js"></script>
