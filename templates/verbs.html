@@ -13,6 +13,9 @@
     #user_input {
         width: 100%; /* Make the input field take the full width of the form */
     }
+    nav#menu ul li ul li a {
+            text-transform: none;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -36,6 +39,7 @@
                         <form method="post" action="{% url 'verbs_view' %}" id="verbForm">
                             {% csrf_token %}
                             <input type="text" id="user_input" name="user_input" placeholder="Type here..." required autofocus>
+                            <br>
                             <input type="submit" name="practice_verbs" value="Check">
                         </form>
                     {% else %}
@@ -55,6 +59,13 @@
                     <ul>
                         <li><a href="{% url 'homepage_view' %}">Home Page</a></li>
                         <li>
+                            <span class="opener">German Practice</span>
+                            <ul>
+                                <li><a href="{% url 'artickle_view' %}">Artikles</a></li>
+                                <li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+                            </ul>						
+                        </li>
+                        <li>
                             <span class="opener">SYSTEMS/DEVOPS</span>
                             <ul>
                                 <li><a href="{% url 'index_view' %}">Index</a></li>
@@ -63,14 +74,6 @@
                                 <li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
                                 <li><a href="{% url 'ssl_view' %}">SSL/TLS Automation</a></li>
                                 <li><a href="{% url 'terraform_view' %}">Terraform</a></li>
-
-                            </ul>						
-                        </li>
-                        <li>
-                            <span class="opener">German Practice</span>
-                            <ul>
-                                <li><a href="{% url 'artickle_view' %}">Artikles</a></li>
-                                <li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
                             </ul>
 						</li>
 					</nav>

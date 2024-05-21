@@ -62,6 +62,9 @@
 						border: none; /* Removes any border from the code element */
 						background: none; /* Removes the default background */
 					  }
+            nav#menu ul li ul li a {
+            text-transform: none;
+            }
 					</style>
 
 
@@ -171,21 +174,21 @@ resource "aws_security_group" "custom_sg" {
 			<ul>
 				<li><a href="{% url 'homepage_view' %}">Home Page</a></li>
 				<li>
-					<span class="opener">SYSTEMS/DEVOPS</span>
-					<ul>
-            <li><a href="{% url 'index_view' %}">Index</a></li>
-						<li><a href="{% url 'aws_view' %}">Aws</a></li>
-						<li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
-						<li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
-            <li><a href="{% url 'ssl_view' %}">SSL/TLS Automation</a></li>
-            <li><a href="{% url 'terraform_view' %}">Terraform</a></li>
-					</ul>						
-				</li>
-				<li>
-					<span class="opener">German Practice</span>
-					<ul>
-						<li><a href="{% url 'artickle_view' %}">Artikles</a></li>
-						<li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+          <span class="opener">German Practice</span>
+          <ul>
+              <li><a href="{% url 'artickle_view' %}">Artikles</a></li>
+              <li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+          </ul>						
+      </li>
+      <li>
+          <span class="opener">SYSTEMS/DEVOPS</span>
+          <ul>
+              <li><a href="{% url 'index_view' %}">Index</a></li>
+              <li><a href="{% url 'aws_view' %}">Aws</a></li>
+              <li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
+              <li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
+              <li><a href="{% url 'ssl_view' %}">SSL/TLS Automation</a></li>
+              <li><a href="{% url 'terraform_view' %}">Terraform</a></li>
 					</ul>
 				</li>
 			</nav>

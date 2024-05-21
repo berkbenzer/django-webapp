@@ -32,6 +32,7 @@
                             border: none;
                             width: 60%;
                             font-size: 12px;
+                            border-radius: 3px;
                         }
 
                         .codebox pre, .codebox code {
@@ -44,12 +45,16 @@
                             border: none;
                             width: 70%;
                             font-size: 12px;
+                            border-radius: 3px;
                         }
 
                         .codebox-1 pre, .codebox-1 code {
                             border: none;
                             background: none;
                             font-size: 12px;
+                        }
+                        nav#menu ul li ul li a {
+                           text-transform: none;
                         }
                     </style>
 
@@ -178,21 +183,21 @@ $EXPIRY_DATE ($DAYS_UNTIL_EXPIRY days from now)." | tee -a $LOG_FILE
                     <ul>
                         <li><a href="{% url 'homepage_view' %}">Home Page</a></li>
                         <li>
+                            <span class="opener">German Practice</span>
+                            <ul>
+                                <li><a href="{% url 'artickle_view' %}">Artikles</a></li>
+                                <li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+                            </ul>						
+                        </li>
+                        <li>
                             <span class="opener">SYSTEMS/DEVOPS</span>
                             <ul>
                                 <li><a href="{% url 'index_view' %}">Index</a></li>
                                 <li><a href="{% url 'aws_view' %}">Aws</a></li>
                                 <li><a href="{% url 'jenkins_view' %}">Jenkins</a></li>
                                 <li><a href="{% url 'kubernetes_view' %}">Kubernetes</a></li>
-                                <li><a href="{% url 'terraform_view' %}">IaaC with Terraform</a></li>
                                 <li><a href="{% url 'ssl_view' %}">SSL/TLS Automation</a></li>
-                            </ul>                        
-                        </li>
-                        <li>
-                            <span class="opener">German Practice</span>
-                            <ul>
-                                <li><a href="{% url 'artickle_view' %}">Artikles</a></li>
-                                <li><a href="{% url 'verbs_view' %}">Verb Konjugations</a></li>
+                                <li><a href="{% url 'terraform_view' %}">Terraform</a></li>
                             </ul>
                         </li>
                     </ul>
